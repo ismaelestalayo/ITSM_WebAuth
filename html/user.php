@@ -9,12 +9,9 @@
     if ($conn->connect_error) {
         echo "Connection failed: " . $conn->connect_error;
     }
+    
+    include('header.php');
 ?>
-
-<html>
-    <h1>ITSM L3</h1>
-
-</html>
 
 <?php
 try{
@@ -35,3 +32,26 @@ try{
 
 $conn->close();
 ?>
+
+<?php
+    $user =  analyze_digest($_SERVER['PHP_AUTH_DIGEST'])['username'];
+    $visib = ( is_null($user) ? "hidden" : "visible");
+?>
+
+<html>
+    <section>
+    <form>
+        <h3>Your account details:</h3>
+        
+        <b>Username:</b>
+        <p> <?php echo $user;?> </p>
+        
+        <b>Password:</b> <br>
+        <p></p>
+        
+        <button type="submit" class="btn btn-outline-primary">Login</button>
+        <br>
+    </form>
+    </section>
+
+</html>

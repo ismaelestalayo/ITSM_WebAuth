@@ -14,44 +14,25 @@
     include('header.php');
 ?>
 
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    
+<html>    
     <section>
         <form>
-            <b>Log into your account:</b> <br>
+            <h3>Log into your account:</h3> <br>
             
-            <p>Username:</p>
+            <b>Username:</b> <br>
             <input type="text" name="name"> <br>
             
-            <p>Password:</p>
+            <b>Password:</b> <br>
             <input type="password" name="password"> <br>
-            <button type="submit">Login</button>
+            
+            <button type="submit" class="btn btn-outline-primary">Login</button>
+            <br>
+            <hr>
+            <button class="btn btn-outline-primary">
+                <a class="httpauth" id="private" href="private.php">HTTP Digest login</a>
+            </button>
         </form>
-        <a class="httpauth" id="private" href="private.php">Log in</a>
     </section>
     
     <br>
 </html>
-
-<?php
-try{
-    $sql = "SELECT _id, _name, _pass FROM USERS WHERE _name='admin'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        echo "Yieee";
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["_id"]. " - Name: " . $row["_name"]. " " . $row["_pass"]. "<br>";
-        }
-      } else {
-        echo "0 results";
-      }
-} catch(PDOException $e) {
-    echo "oooopsies: " . $e->getMessage();
-}
-
-$conn->close();
-?>

@@ -1,5 +1,12 @@
+<?php
+    include 'digest.php';
+    $user =  analyze_digest($_SERVER['PHP_AUTH_DIGEST'])['username'];
+    $visib = ( is_null($user) ? "hidden" : "visible");
+?>
+
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,11 +18,11 @@
         </div>
 
         <ul>
-            <li>
-                <a href="/user">User</a>
+            <li style="visibility: <?php echo $visib ?>">
+                <a href="/user.php"><?php echo $user;?></a>
             </li>
-            <li>
-                <a href="#">Logout</a>
+            <li style="visibility: <?php echo $visib ?>">
+                <a href="#" class="btn btn-danger">Logout</a>
             </li>
         </ul>
     </nav>
@@ -23,8 +30,3 @@
 
 </html>
 
-<?php
-    include 'digest.php';
-    echo "TESTT: ";
-    echo analyze_digest($_SERVER['PHP_AUTH_DIGEST'])['username'];
-?>

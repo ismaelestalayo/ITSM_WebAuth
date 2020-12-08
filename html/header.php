@@ -1,5 +1,5 @@
 <?php
-    include 'digest.php';
+    include 'analyze_digest.php';
     $user =  analyze_digest($_SERVER['PHP_AUTH_DIGEST'])['username'];
     $visib = ( is_null($user) ? "hidden" : "visible");
 ?>
@@ -22,7 +22,7 @@
                 <a href="/user.php"><?php echo $user;?></a>
             </li>
             <li style="visibility: <?php echo $visib ?>">
-                <a href="#" class="btn btn-danger">Logout</a>
+                <a href="/" class="btn btn-danger" onclick="<?php session_destroy(); ?>">Logout</a>
             </li>
         </ul>
     </nav>

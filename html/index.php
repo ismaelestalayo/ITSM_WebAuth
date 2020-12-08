@@ -29,7 +29,7 @@
             <br>
             <hr>
             <button class="btn btn-outline-primary">
-                <a class="httpauth" id="private" href="private.php">HTTP Digest login</a>
+                <a class="httpauth" id="private" href="login_digest.php">HTTP Digest login</a>
             </button>
         </form>
     </section>

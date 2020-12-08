@@ -1,42 +1,31 @@
 <?php
-    $host = "mysql-server";
-    $user = "root";
-    $pass = "secret";
-    $db = "ITSM_L3";
-    
-    $conn = new mysqli($host, $user, $pass, $db);
-    
-    if ($conn->connect_error) {
-        echo "Connection failed: " . $conn->connect_error;
-    }
-    
-    include('header.php');
-?>
+$host = "mysql-server";
+$user = "root";
+$pass = "secret";
+$db = "ITSM_L3";
 
-<?php
-try{
+$conn = new mysqli($host, $user, $pass, $db);
+$conn->set_charset('utf8mb4');
+
+if ($conn->connect_error) {
+    echo "Connection failed: " . $conn->connect_error;
+}
+else{
+    include('header.php');
+    
     $sql = "SELECT _id, _name, _pass FROM USERS WHERE _name='admin'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        echo "Yieee";
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["_id"]. " - Name: " . $row["_name"]. " " . $row["_pass"]. "<br>";
-        }
-      } else {
+    $result = $conn->query($sql, 1);
+    if ($result) {
+        $row = $result->fetch_assoc();
+    } else {
         echo "0 results";
-      }
-} catch(PDOException $e) {
-    echo "oooopsies: " . $e->getMessage();
+        $row["_name"] = "error";
+        $row["_pass"] = "error";
+    }
 }
 
-$conn->close();
 ?>
 
-<?php
-    $user =  analyze_digest($_SERVER['PHP_AUTH_DIGEST'])['username'];
-    $visib = ( is_null($user) ? "hidden" : "visible");
-?>
 
 <html>
     <section>
@@ -44,13 +33,10 @@ $conn->close();
         <h3>Your account details:</h3>
         
         <b>Username:</b>
-        <p> <?php echo $user;?> </p>
+        <p> <?php echo $row["_name"];?> </p>
         
         <b>Password:</b> <br>
-        <p></p>
-        
-        <button type="submit" class="btn btn-outline-primary">Login</button>
-        <br>
+        <p> <?php echo $row["_pass"];?> </p>
     </form>
     </section>
 

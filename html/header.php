@@ -22,7 +22,7 @@
                 <a href="/user.php"><?php echo $user;?></a>
             </li>
             <li style="visibility: <?php echo $visib ?>">
-                <a href="/" class="btn btn-danger" onclick="<?php session_destroy(); ?>">Logout</a>
+                <a href="/logout.php" class="btn btn-danger">Logout</a>
             </li>
         </ul>
     </nav>

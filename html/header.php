@@ -1,7 +1,7 @@
 <?php
-    include 'analyze_digest.php';
-    $user =  analyze_digest($_SERVER['PHP_AUTH_DIGEST'])['username'];
-    $visib = ( is_null($user) ? "hidden" : "visible");
+session_start();
+$user = $_SESSION["_name"];
+$visib = ( is_null($user) ? "hidden" : "visible");
 ?>
 
 <html>

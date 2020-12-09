@@ -1,36 +1,54 @@
 <?php
-    
-    $host = "mysql-server";
-    $user = "root";
-    $pass = "secret";
-    $db = "ITSM_L3";
-    
-    $conn = new mysqli($host, $user, $pass, $db);
-    
-    if ($conn->connect_error) {
-        echo "Connection failed: " . $conn->connect_error;
-    }
-    
-    include('header.php');
+
+session_start();
+$display="none";
+
+$host = "mysql-server";
+$user = "root";
+$pass = "secret";
+$db = "ITSM_L3";
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    echo "Connection failed: " . $conn->connect_error;
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])){
+    if (include("login_digest.php"))
+        echo "YIEEEEEEE";
+    else
+        $display = "block";
+}
+
+include('header.php');
 ?>
 
 <html>    
     <section>
-        <form>
-            <h3>Log into your account:</h3> <br>
-            
-            <b>Username:</b> <br>
-            <input type="text" name="name"> <br>
-            
-            <b>Password:</b> <br>
-            <input type="password" name="password"> <br>
-            
-            <button type="submit" class="btn btn-outline-primary">Login</button>
+        <form method="post">
+            <h3>Log into your account:</h3>
             <br>
+            
+            <div class="alert alert-danger" role="alert" style="display: <?= $display ?>">
+                <?= $_SESSION["error"]; ?>
+            </div>
+            
+            <div class="form-group">
+                <label for="formGroupExampleInput">Username</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput2">
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary">Login</button>
+            <a class="btn btn-outline-secondary" href="create_user.php">Create user</a>
+            
             <hr>
-            <button class="btn btn-outline-primary">
-                <a class="httpauth" id="private" href="login_digest.php">HTTP Digest login</a>
-            </button>
+            
+            <input class="httpauth btn btn-outline-primary" type="submit" name="someAction" value="HTTP Digest login" />
         </form>
     </section>
     

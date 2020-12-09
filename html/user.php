@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = "mysql-server";
 $user = "root";
 $pass = "secret";
@@ -31,23 +32,20 @@ else{
     <section>
     <form>
         <h3>Your account details:</h3>
+        <br>
         
-        
-        <p>
-            <b>Username:</b>
-            <?php echo $row["_name"];?>
-        </p>
-        
-        
-        <p>
-            <b>Email:</b>
-            <?php echo $row["_mail"];?>
-        </p>
-        
-        <p> 
-            <b>Password:</b>
-            <?php echo $row["_pass"];?>
-        </p>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Username</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" disabled placeholder="<?php echo $row["_pass"];?>">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Email</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" disabled placeholder="<?php echo $row["_mail"];?>">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input type="password" class="form-control" id="formGroupExampleInput2" disabled placeholder="<?php echo $row["_pass"];?>">
+        </div>
     </form>
     </section>
 

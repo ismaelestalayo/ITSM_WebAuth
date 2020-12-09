@@ -4,8 +4,10 @@ body {
 }
 
 h1 {
-    color: #111;
-    font-weight: bold;
+    color: #fff;
+    font-family: Roboto, Arial, sans;
+    font-weight: 300;
+    margin-bottom: 0;
 }
 
 a,
@@ -22,8 +24,8 @@ form {
     border-radius: 5px;
     box-shadow: 0px 4px 10px #99999988;
     margin: auto;
-    padding: 1rem 2rem;
-    width: max-content;
+    padding: 1.5rem 2rem;
+    width: 25rem;
 }
 
 form p {
@@ -35,7 +37,7 @@ input {
 }
 
 hr {
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
 

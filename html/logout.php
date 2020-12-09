@@ -1,7 +1,8 @@
 <?php
 
 header('HTTP/1.1 401 Unauthorized');
-$_SERVER = null;
+session_start();
+unset($_SESSION["_name"]);
 include('header.php');
 
 ?>

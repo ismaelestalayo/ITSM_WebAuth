@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 else{
     include('header.php');
     
-    $sql = "SELECT _id, _name, _pass FROM USERS WHERE _name='admin'";
+    $sql = "SELECT _id, _name, _mail, _pass FROM USERS WHERE _name='admin'";
     $result = $conn->query($sql, 1);
     if ($result) {
         $row = $result->fetch_assoc();
@@ -32,11 +32,22 @@ else{
     <form>
         <h3>Your account details:</h3>
         
-        <b>Username:</b>
-        <p> <?php echo $row["_name"];?> </p>
         
-        <b>Password:</b> <br>
-        <p> <?php echo $row["_pass"];?> </p>
+        <p>
+            <b>Username:</b>
+            <?php echo $row["_name"];?>
+        </p>
+        
+        
+        <p>
+            <b>Email:</b>
+            <?php echo $row["_mail"];?>
+        </p>
+        
+        <p> 
+            <b>Password:</b>
+            <?php echo $row["_pass"];?>
+        </p>
     </form>
     </section>
 

@@ -3,7 +3,7 @@ class db {
 
     protected $connection;
 	protected $query;
-    protected $show_errors = TRUE;
+    protected $show_errors = FALSE;
     protected $query_closed = TRUE;
 	public $query_count = 0;
 
@@ -17,8 +17,9 @@ class db {
         $this->connection = new mysqli($db_host, $db_user, $db_pass, $db_name);
 		if ($this->connection->connect_error) {
 			$this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
+		} else{
+			$this->connection->set_charset('utf8mb4');
 		}
-		$this->connection->set_charset('utf8mb4');
 	}
 
     public function query($query) {

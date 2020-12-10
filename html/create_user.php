@@ -11,15 +11,15 @@ include('header.php');
         
         <div class="form-group">
             <label for="formGroupExampleInput">Username</label>
-            <input type="text" class="form-control" name="_name">
+            <input type="text" class="form-control" name="_name" required>
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Email</label>
-            <input type="text" class="form-control" name="_mail">
+            <input type="text" class="form-control" name="_mail" required>
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Password</label>
-            <input type="password" class="form-control" name="_pass">
+            <input type="password" class="form-control" name="_pass" required>
         </div>
         
         <br>

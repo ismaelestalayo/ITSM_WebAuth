@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-include('analyze_digest.php');
+include_once('analyze_digest.php');
 $domain = 'PrivateDomain';    
 
-include("db.php");
+include_once("db.php");
 $db = new db();
 $users = $db->query('SELECT _name, _pass FROM USERS')->fetchAll();
 $names = array_column($users, "_name");

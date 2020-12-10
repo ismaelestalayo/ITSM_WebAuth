@@ -1,15 +1,14 @@
 <?php
 
 session_start();
-$display="none";
 
 // Just test the DB connectivity
-include 'db.php';
+include_once('db.php');
 $db = new db();
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])){
     if (include("login_digest.php"))
-        echo "YIEEEEEEE";
+        $display="none";
     else
         $display = "block";
 }

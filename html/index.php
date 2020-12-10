@@ -3,16 +3,9 @@
 session_start();
 $display="none";
 
-$host = "mysql-server";
-$user = "root";
-$pass = "secret";
-$db = "ITSM_L3";
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    echo "Connection failed: " . $conn->connect_error;
-}
+// Just test the DB connectivity
+include 'db.php';
+$db = new db();
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])){
     if (include("login_digest.php"))

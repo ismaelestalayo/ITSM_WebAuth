@@ -66,3 +66,18 @@ nav ul li {
 nav ul li a {
     color: #fff;
 }
+
+
+/* **************************
+ *     ADMIN TABLE
+************************** */
+
+table {
+    border: none;
+}
+
+th,
+td {
+    padding: 0.5em 1em;
+    border-bottom: 2px solid white;
+}

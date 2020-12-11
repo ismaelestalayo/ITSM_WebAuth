@@ -15,9 +15,10 @@ if(!empty($_POST['_name']) && !empty($_POST['_mail']) && !empty($_POST['_pass'])
     $_name = $_POST['_name'];
     $_mail = $_POST['_mail'];
     $_pass = $_POST['_pass'];
-    $_pass = password_hash($_pass, PASSWORD_BCRYPT, ['cost' => 11]);
+    $_digest = md5("{$_name}:itsm_domain:{$_pass}");
+    $_pass = password_hash($_pass, PASSWORD_BCRYPT, ['cost' => 11, 'salt' => 'ITSM-webAuth-task-laboratory3']);
     
-    $sql = "INSERT INTO USERS (_name, _mail, _pass) VALUES ('$_name', '$_mail', '$_pass');";
+    $sql = "INSERT INTO USERS (_name, _mail, _pass, _digest) VALUES ('$_name', '$_mail', '$_pass', '$_digest');";
     $result = $conn->query($sql, 1);
     print( $sql);
     if ($result) {

@@ -15,7 +15,7 @@ include('header.php');
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Email</label>
-            <input type="text" class="form-control" name="_mail" required>
+            <input type="email" class="form-control" name="_mail" required>
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Password</label>

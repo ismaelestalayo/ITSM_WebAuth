@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+$display="none";
 // Just test the DB connectivity
 include_once('db.php');
 $db = new db();
@@ -18,7 +18,7 @@ include('header.php');
 
 <html>    
     <section>
-        <form method="post">
+        <form action="login.php" method="post">
             <h3>Log into your account:</h3>
             <br>
             
@@ -39,7 +39,8 @@ include('header.php');
             <a class="btn btn-outline-secondary" href="create_user.php">Create user</a>
             
             <hr>
-            
+        </form>
+        <form method="post">
             <input class="httpauth btn btn-outline-primary" type="submit" name="someAction" value="HTTP Digest login" />
         </form>
     </section>

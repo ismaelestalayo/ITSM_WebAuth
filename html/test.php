@@ -1,19 +1,19 @@
 <?php
 
-// $timeTarget = 0.1; // 50 milisegundos 
+$timeTarget = 0.1; // 100 mseg 
 
-// $coste = 8;
-// do {
-//     $coste++;
-//     $inicio = microtime(true);
-//     password_hash("test", PASSWORD_BCRYPT, ["cost" => $coste]);
-//     $fin = microtime(true);
-// } while (($fin - $inicio) < $timeTarget);
+$cost = 5;
+do {
+    $cost++;
+    $t0 = microtime(true);
+    password_hash("test", PASSWORD_BCRYPT, ['cost' => $cost, 'salt' => 'ITSM-webAuth-task-laboratory3']);
+    $t1 = microtime(true);
+} while (($t1 - $t0) < $timeTarget);
 
-// echo "Coste apropiado encontrado: " . $coste . "\n";
+echo "Maximum cost: " . $cost . "\n";
 
-include 'db.php';
-$db = new db();
-$account = $db->query('SELECT * FROM USERS WHERE _name = ? ', 'admin')->fetchArray();
-print_r($account);
+// include 'db.php';
+// $db = new db();
+// $account = $db->query('SELECT * FROM USERS WHERE _name = ? ', 'admin')->fetchArray();
+// print_r($account);
 ?>

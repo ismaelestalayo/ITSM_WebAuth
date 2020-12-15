@@ -29,6 +29,7 @@ if (!($data = analyze_digest($_SERVER['PHP_AUTH_DIGEST'])) || !isset($user_creds
 } else {
     $user = $data['username'];
     // Generate valid response
+    // $A1 = md5($data['username'] . ':' . $domain . ':' . $users[$data['username']]);
     $A1 = $user_creds[$user];
     $A2 = md5($_SERVER['REQUEST_METHOD'].':'.$data['uri']);
     $valid_response = md5($A1.':'.$data['nonce'].':'.$data['nc'].':'.$data['cnonce'].':'.$data['qop'].':'.$A2);

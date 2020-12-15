@@ -6,7 +6,7 @@ $display="none";
 include_once('db.php');
 $db = new db();
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])){
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['httpDigest'])){
     if (include("login_digest.php"))
         $display="none";
     else
@@ -41,7 +41,7 @@ include('header.php');
             <hr>
         </form>
         <form method="post">
-            <input class="httpauth btn btn-outline-primary" type="submit" name="someAction" value="HTTP Digest login" />
+            <input class="httpauth btn btn-outline-primary" type="submit" name="httpDigest" value="HTTP Digest login" />
         </form>
     </section>
     
